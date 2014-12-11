@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
+    <persistence-unit name="persistence">
+        <provider>org.apache.openjpa.persistence.PersistenceProviderImpl</provider>
+
+        <class>com.tz.travel.model.TravelFlow</class>
+        <class>com.tz.travel.model.TravelMember</class>
+        <class>com.tz.travel.model.TravelPlan</class>
+        <class>com.tz.travel.model.UserExt</class>
+        <class>com.tz.travel.model.UserInfo</class>
+        <class>com.tz.travel.model.ViewPoint</class>
+        <class>com.tz.travel.model.ViewPointImage</class>
+        <properties>
+            <property name="openjpa.ConnectionURL" value="jdbc:mysql://localhost:3306/tcs"/>
+            <property name="openjpa.ConnectionDriverName" value="com.mysql.jdbc.Driver"/>
+            <property name="openjpa.ConnectionUserName" value="tzjeefjalft"/>
+            <property name="openjpa.ConnectionPassword" value="0310322108"/>
+            <property name="openjpa.ClassLoadEnhancement" value="false" />
+            <property name="openjpa.DynamicEnhancementAgent" value="false" />
+            <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+        </properties>
+    </persistence-unit>
+</persistence>
