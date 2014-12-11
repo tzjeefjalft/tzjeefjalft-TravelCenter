@@ -20,7 +20,6 @@ import org.springframework.transaction.annotation.Transactional;
  * Created by tzjeefjalft on 12/10/2014.
  */
 @Transactional
-@Component
 public class AbstractGenericDao<T, K> implements GenericDao<T, K> {
     private final Class<T> persistentClass;
     private final Class<K> idClass;
