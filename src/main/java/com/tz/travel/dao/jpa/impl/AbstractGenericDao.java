@@ -19,13 +19,14 @@ import org.springframework.transaction.annotation.Transactional;
 /**
  * Created by tzjeefjalft on 12/10/2014.
  */
-@Transactional
 public class AbstractGenericDao<T, K> implements GenericDao<T, K> {
     private final Class<T> persistentClass;
     private final Class<K> idClass;
 
-    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
-    private EntityManager entityManager = emf.createEntityManager();
+//    private EntityManagerFactory emf = Persistence.createEntityManagerFactory("persistence");
+//    private EntityManager entityManager = emf.createEntityManager();
+    @PersistenceContext
+    protected EntityManager entityManager;
 
     public AbstractGenericDao(Class<T> persistentClass, Class<K> idClass) {
         this.persistentClass = persistentClass;

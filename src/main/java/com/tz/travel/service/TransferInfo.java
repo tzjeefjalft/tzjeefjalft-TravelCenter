@@ -4,7 +4,6 @@ import com.tz.travel.kernel.model.entity.UserEntity;
 import com.tz.travel.kernel.model.rest.request.InfoRequest;
 import com.tz.travel.model.UserExt;
 import com.tz.travel.model.UserInfo;
-import org.omg.PortableInterceptor.RequestInfo;
 import org.springframework.stereotype.Service;
 
 /**
@@ -19,7 +18,22 @@ public class TransferInfo {
         userInfo.setUserPw(userEntity.getUserPw());
         UserExt userExt = new UserExt();
         userExt.setEmail(userEntity.getEmail());
+        userExt.setPhoneNumber(123456789);
+        userInfo.setBusinessLevel(1);
         userInfo.setTblUserExtById(userExt);
         return userInfo;
+    }
+
+    public UserExt UserInfoRequestToUserExt(InfoRequest<UserEntity> requestInfo){
+        UserEntity userEntity = requestInfo.getInfo();
+        UserInfo userInfo = new UserInfo();
+        userInfo.setUserName(userEntity.getUserName());
+        userInfo.setUserPw(userEntity.getUserPw());
+        UserExt userExt = new UserExt();
+        userExt.setEmail(userEntity.getEmail());
+        userExt.setPhoneNumber(123456789);
+        userInfo.setBusinessLevel(1);
+        userExt.setTblUserInfoById(userInfo);
+        return userExt;
     }
 }

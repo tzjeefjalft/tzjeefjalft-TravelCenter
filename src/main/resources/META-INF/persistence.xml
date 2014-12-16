@@ -20,6 +20,7 @@
             <property name="openjpa.DynamicEnhancementAgent" value="false" />
             <property name="openjpa.RuntimeUnenhancedClasses" value="supported" />
             <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <property name="openjpa.Log" value="DefaultLevel=WARN, Runtime=INFO, Tool=INFO, SQL=TRACE"/>
         </properties>
     </persistence-unit>
 </persistence>

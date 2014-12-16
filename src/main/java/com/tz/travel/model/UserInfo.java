@@ -19,6 +19,7 @@ public class UserInfo {
     private Collection<ViewPoint> tblViewPointsById;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "ID")
     public int getId() {
         return id;

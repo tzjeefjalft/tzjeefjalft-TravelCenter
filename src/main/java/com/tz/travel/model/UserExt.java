@@ -91,8 +91,8 @@ public class UserExt {
         return result;
     }
 
-    @OneToOne
-    @JoinColumn(name = "ID", referencedColumnName = "ID", nullable = false)
+    @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
     public UserInfo getTblUserInfoById() {
         return tblUserInfoById;
     }

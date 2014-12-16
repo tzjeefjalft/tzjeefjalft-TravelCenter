@@ -2,16 +2,40 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:security="http://www.springframework.org/schema/security"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
 	http://www.springframework.org/schema/security
 	http://www.springframework.org/schema/security/spring-security-3.1.xsd
 	http://www.springframework.org/schema/context 
-	http://www.springframework.org/schema/context/spring-context.xsd">
+	http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <context:component-scan base-package="com.tz.travel" />
     <context:annotation-config/>
+    <bean id="entityManagerFactory"
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <!--<property name="jpaVendorAdapter">-->
+            <!--<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter">-->
+                <!--<property name="showSql" value="true" />-->
+                <!--<property name="generateDdl" value="true" />-->
+                <!--<property name="databasePlatform" value="org.hibernate.dialect.PostgreSQLDialect" />-->
+            <!--</bean>-->
+        <!--</property>-->
+        <property name="persistenceUnitName" value="persistence"></property>
+        <!--<property name="dataSource" ref="dataSource"></property>-->
+    </bean>
+
+    <!-- DataSource Setup -->
+    <!--<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">-->
+        <!--<property name="driverClassName" value="com.mysql.jdbc.Driver" />-->
+        <!--<property name="url" value="jdbc:mysql://localhost:3306/tcs" />-->
+        <!--<property name="username" value="tzjeefjalft" />-->
+        <!--<property name="password" value="0310322108" />-->
+    <!--</bean>-->
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+    <tx:annotation-driven transaction-manager="transactionManager" />
     <!--<bean id="entityManager" class="javax.persistence.EntityManager" abstract="true" factory-bean="emf">-->
     <!--</bean>-->
     <!--<bean id="emf" class="javax.persistence.EntityManagerFactory" abstract="true" factory-bean="persistence" factory-method="createEntityManager">-->
