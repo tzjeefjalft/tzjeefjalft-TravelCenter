@@ -24,8 +24,8 @@ public class UserInfo{
     private Collection<ViewPoint> tblViewPointsById;
 
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "USER_ID", unique = true, nullable = false)
     public int getId() {
         return id;
     }
@@ -96,8 +96,7 @@ public class UserInfo{
     public void setTblTravelMembersById(Collection<TravelMember> tblTravelMembersById) {
         this.tblTravelMembersById = tblTravelMembersById;
     }
-
-    @OneToMany(mappedBy = "tblUserInfoByUserId")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tblUserInfoByUserId", cascade = CascadeType.ALL)
     public Collection<TravelPlan> getTblTravelPlansById() {
         return tblTravelPlansById;
     }
@@ -105,12 +104,7 @@ public class UserInfo{
     public void setTblTravelPlansById(Collection<TravelPlan> tblTravelPlansById) {
         this.tblTravelPlansById = tblTravelPlansById;
     }
-
-//    @OneToOne(mappedBy = "tblUserInfoById")
-
-    @OneToOne(mappedBy = "tblUserInfoById")
-//    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
-//    @JoinColumn(name="ID")
+    @OneToOne(fetch = FetchType.EAGER, mappedBy = "tblUserInfoById", cascade = CascadeType.ALL)
     public UserExt getTblUserExtById() {
         return tblUserExtById;
     }

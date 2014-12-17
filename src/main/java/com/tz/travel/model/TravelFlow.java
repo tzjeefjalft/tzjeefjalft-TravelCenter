@@ -15,7 +15,7 @@ public class TravelFlow {
     private TravelPlan tblTravelPlanByTravelId;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "TRAVEL_FLOW_ID")
     public int getId() {
         return id;
     }
@@ -67,7 +67,7 @@ public class TravelFlow {
     }
 
     @ManyToOne
-    @JoinColumn(name = "VIEW_POINT_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "VIEW_POINT_ID", referencedColumnName = "VIEW_POINT_ID", nullable = false)
     public ViewPoint getTblViewPointByViewPointId() {
         return tblViewPointByViewPointId;
     }
@@ -77,7 +77,7 @@ public class TravelFlow {
     }
 
     @ManyToOne
-    @JoinColumn(name = "TRAVEL_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "TRAVEL_PLAN_ID", nullable = false)
     public TravelPlan getTblTravelPlanByTravelId() {
         return tblTravelPlanByTravelId;
     }

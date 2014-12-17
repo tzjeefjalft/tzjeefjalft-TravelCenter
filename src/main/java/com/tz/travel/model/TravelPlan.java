@@ -19,7 +19,7 @@ public class TravelPlan {
     private UserInfo tblUserInfoByUserId;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "TRAVEL_PLAN_ID")
     public int getId() {
         return id;
     }
@@ -112,8 +112,8 @@ public class TravelPlan {
         this.tblTravelMembersById = tblTravelMembersById;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "USER_ID", nullable = true)
     public UserInfo getTblUserInfoByUserId() {
         return tblUserInfoByUserId;
     }

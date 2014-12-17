@@ -48,6 +48,18 @@ public class UserInfoService {
         }
     }
 
+    @GET
+    @Path("/ext")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getUserExtById(@QueryParam("id") Integer id){
+        try {
+            return Response.ok().entity(userExtDao.find(id)).build();
+        } catch (Exception e){
+            LOGGER.error(e.getMessage(), e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).entity(e.getMessage()).build();
+        }
+    }
+
     @POST
     @Path("/")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -55,8 +67,8 @@ public class UserInfoService {
     @Transactional
     public Response createUser(InfoRequest<UserEntity> infoRequest){
         try {
-            UserExt userExt = transferInfo.UserInfoRequestToUserExt(infoRequest);
-            userExtDao.create(userExt);
+            UserInfo userInfo = transferInfo.UserInfoRequestToUserInfo(infoRequest);
+            userInfoDao.create(userInfo);
             return Response.ok().entity(null).build();
         } catch (Exception e){
             LOGGER.error(e.getMessage(), e);

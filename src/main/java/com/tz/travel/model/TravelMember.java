@@ -13,7 +13,7 @@ public class TravelMember {
     private UserInfo tblUserInfoByUserId;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "TRAVEL_MEMBER_ID")
     public int getId() {
         return id;
     }
@@ -40,7 +40,7 @@ public class TravelMember {
     }
 
     @ManyToOne
-    @JoinColumn(name = "TRAVEL_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "TRAVEL_PLAN_ID", referencedColumnName = "TRAVEL_PLAN_ID", nullable = false)
     public TravelPlan getTblTravelPlanByTravelId() {
         return tblTravelPlanByTravelId;
     }
@@ -50,7 +50,7 @@ public class TravelMember {
     }
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID", nullable = false)
     public UserInfo getTblUserInfoByUserId() {
         return tblUserInfoByUserId;
     }

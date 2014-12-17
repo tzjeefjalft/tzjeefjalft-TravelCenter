@@ -19,7 +19,7 @@ public class ViewPoint {
     private Collection<ViewPointImage> tblViewPointImagesById;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "VIEW_POINT_ID")
     public int getId() {
         return id;
     }
@@ -105,7 +105,7 @@ public class ViewPoint {
     }
 
     @ManyToOne
-    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID", nullable = false)
     public UserInfo getTblUserInfoByUserId() {
         return tblUserInfoByUserId;
     }

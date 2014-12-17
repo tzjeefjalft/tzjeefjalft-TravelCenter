@@ -13,7 +13,7 @@ public class ViewPointImage {
     private ViewPoint tblViewPointByViewPointId;
 
     @Id
-    @Column(name = "ID")
+    @Column(name = "VIEW_POINT_IMAGE_ID")
     public int getId() {
         return id;
     }
@@ -53,7 +53,7 @@ public class ViewPointImage {
     }
 
     @ManyToOne
-    @JoinColumn(name = "VIEW_POINT_ID", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "VIEW_POINT_ID", referencedColumnName = "VIEW_POINT_ID", nullable = false)
     public ViewPoint getTblViewPointByViewPointId() {
         return tblViewPointByViewPointId;
     }
