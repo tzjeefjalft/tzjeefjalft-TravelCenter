@@ -1,6 +1,10 @@
 package com.tz.travel.model;
 
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Collection;
 
 /**
@@ -8,7 +12,8 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "tbl_user_info", schema = "", catalog = "tcs")
-public class UserInfo {
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_EMPTY)
+public class UserInfo{
     private int id;
     private String userName;
     private String userPw;
@@ -101,7 +106,11 @@ public class UserInfo {
         this.tblTravelPlansById = tblTravelPlansById;
     }
 
+//    @OneToOne(mappedBy = "tblUserInfoById")
+
     @OneToOne(mappedBy = "tblUserInfoById")
+//    @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
+//    @JoinColumn(name="ID")
     public UserExt getTblUserExtById() {
         return tblUserExtById;
     }

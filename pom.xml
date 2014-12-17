@@ -14,7 +14,7 @@
 <properties>
     <spring.version>3.1.2.RELEASE</spring.version>
     <jackson.version>1.9.2</jackson.version>
-    <jersey.version>1.9</jersey.version>
+    <jersey.version>1.18</jersey.version>
 </properties>
 
 <dependencies>
@@ -30,6 +30,16 @@
         <artifactId>com.tz.travel.kernel</artifactId>
         <version>1.0-SNAPSHOT</version>
     </dependency>
+
+    <!--<dependency>-->
+        <!--<groupId>org.codehaus.jackson</groupId>-->
+        <!--<artifactId>jackson-core-asl</artifactId>-->
+    <!--</dependency>-->
+
+    <!--<dependency>-->
+        <!--<groupId>org.codehaus.jackson</groupId>-->
+        <!--<artifactId>jackson-mapper-asl</artifactId>-->
+    <!--</dependency>-->
 
     <dependency>
         <groupId>com.sun.jersey</groupId>
@@ -112,17 +122,6 @@
         <artifactId>spring-context</artifactId>
         <version>4.1.2.RELEASE</version>
     </dependency>
-    <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-web</artifactId>-->
-        <!--<version>4.1.2.RELEASE</version>-->
-    <!--</dependency>-->
-
-    <!--<dependency>-->
-        <!--<groupId>org.springframework</groupId>-->
-        <!--<artifactId>spring-orm</artifactId>-->
-        <!--<version>4.1.2.RELEASE</version>-->
-    <!--</dependency>-->
     <dependency>
         <groupId>org.apache.openjpa</groupId>
         <artifactId>openjpa</artifactId>
@@ -202,6 +201,21 @@
 
 
 </dependencies>
+
+    <!--<dependencyManagement>-->
+        <!--<dependencies>-->
+            <!--<dependency>-->
+                <!--<groupId>org.codehaus.jackson</groupId>-->
+                <!--<artifactId>jackson-core-asl</artifactId>-->
+                <!--<version>${jackson.version}</version>-->
+            <!--</dependency>-->
+            <!--<dependency>-->
+                <!--<groupId>org.codehaus.jackson</groupId>-->
+                <!--<artifactId>jackson-mapper-asl</artifactId>-->
+                <!--<version>${jackson.version}</version>-->
+            <!--</dependency>-->
+        <!--</dependencies>-->
+    <!--</dependencyManagement>-->
     <build>
         <finalName>TravelCenterService</finalName>
         <plugins>

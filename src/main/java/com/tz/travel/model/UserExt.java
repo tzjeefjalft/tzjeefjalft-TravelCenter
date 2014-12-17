@@ -1,14 +1,23 @@
 package com.tz.travel.model;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.annotate.JsonIgnore;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import javax.persistence.*;
+import java.io.Serializable;
 
 /**
  * Created by tzjeefjalft on 12/11/2014.
  */
 @Entity
 @Table(name = "tbl_user_ext", schema = "", catalog = "tcs")
-public class UserExt {
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_EMPTY)
+public class UserExt implements Serializable {
+
     private int id;
+
+    private int userId;
     private String email;
     private int travelTimes;
     private Integer totalKm;
@@ -16,6 +25,7 @@ public class UserExt {
     private UserInfo tblUserInfoById;
 
     @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
     @Column(name = "ID")
     public int getId() {
         return id;
@@ -91,8 +101,9 @@ public class UserExt {
         return result;
     }
 
-    @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.LAZY)
+    @OneToOne(cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
+    @JsonBackReference(value = "tblUserInfoById")
     public UserInfo getTblUserInfoById() {
         return tblUserInfoById;
     }
