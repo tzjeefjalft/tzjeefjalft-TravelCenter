@@ -1,5 +1,8 @@
 package com.tz.travel.model;
 
+import org.codehaus.jackson.annotate.JsonBackReference;
+import org.codehaus.jackson.map.annotate.JsonSerialize;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -8,6 +11,7 @@ import java.util.Collection;
  */
 @Entity
 @Table(name = "tbl_travel_plan", schema = "", catalog = "tcs")
+@JsonSerialize(include = JsonSerialize.Inclusion.NON_EMPTY)
 public class TravelPlan {
     private int id;
     private String title;
@@ -112,8 +116,9 @@ public class TravelPlan {
         this.tblTravelMembersById = tblTravelMembersById;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "USER_ID", nullable = true)
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID", nullable = true)
+    @JsonBackReference(value = "tblUserInfoByUserId")
     public UserInfo getTblUserInfoByUserId() {
         return tblUserInfoByUserId;
     }

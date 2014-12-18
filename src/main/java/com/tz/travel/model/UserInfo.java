@@ -96,7 +96,8 @@ public class UserInfo{
     public void setTblTravelMembersById(Collection<TravelMember> tblTravelMembersById) {
         this.tblTravelMembersById = tblTravelMembersById;
     }
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "tblUserInfoByUserId", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "tblUserInfoByUserId", cascade = CascadeType.ALL)
+    @Transient
     public Collection<TravelPlan> getTblTravelPlansById() {
         return tblTravelPlansById;
     }

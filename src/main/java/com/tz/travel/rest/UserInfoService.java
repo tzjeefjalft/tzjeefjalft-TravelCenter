@@ -1,8 +1,10 @@
 package com.tz.travel.rest;
 
+import com.tz.travel.dao.jpa.Interface.TravelPlanDao;
 import com.tz.travel.dao.jpa.Interface.UserExtDao;
 import com.tz.travel.dao.jpa.Interface.UserInfoDao;
 import com.tz.travel.kernel.model.entity.UserEntity;
+import com.tz.travel.model.TravelPlan;
 import com.tz.travel.model.UserExt;
 import com.tz.travel.model.UserInfo;
 import com.tz.travel.service.TransferInfo;
@@ -16,6 +18,8 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.awt.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 import com.tz.travel.kernel.model.rest.request.InfoRequest;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +39,8 @@ public class UserInfoService {
     private UserExtDao userExtDao;
     @Autowired
     private TransferInfo transferInfo;
+    @Autowired
+    private TravelPlanDao travelPlanDao;
 
     @GET
     @Path("/")
@@ -77,14 +83,24 @@ public class UserInfoService {
     }
 
     @PUT
-    @Path("/")
+    @Path("/createTravelPlanByUserId")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Response editUser(@QueryParam("id") Integer id,InfoRequest<UserEntity> infoRequest){
+    public Response createTravelPlan(@QueryParam("id") Integer id,InfoRequest<UserEntity> infoRequest){
         try {
             UserInfo info = userInfoDao.find(id);
-            info.setUserPw("777");
-            userInfoDao.update(info);
+            TravelPlan travelPlan = new TravelPlan();
+            travelPlan.setTitle("title");
+            travelPlan.setStatus(1);
+            travelPlan.setImgPath("img");
+            travelPlan.setDescription("desc");
+//            Collection<TravelPlan> travelPlans = new ArrayList<TravelPlan>();
+//            travelPlans.add(travelPlan);
+//            info.setTblTravelPlansById(travelPlans);
+//            info.setUserPw("777");
+//            userInfoDao.create(info);
+            travelPlan.setTblUserInfoByUserId(info);
+            travelPlanDao.create(travelPlan);
             return Response.ok().entity(null).build();
         } catch (Exception e){
             LOGGER.error(e.getMessage(), e);

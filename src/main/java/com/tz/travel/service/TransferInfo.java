@@ -25,15 +25,6 @@ public class TransferInfo {
         userExt.setPhoneNumber(123456789);
         userInfo.setBusinessLevel(1);
         userInfo.setTblUserExtById(userExt);
-
-//        TravelPlan travelPlan = new TravelPlan();
-//        travelPlan.setTitle("title");
-//        travelPlan.setStatus(1);
-//        travelPlan.setImgPath("img");
-//        travelPlan.setDescription("desc");
-//        Collection<TravelPlan> travelPlans = new ArrayList<TravelPlan>();
-//        travelPlans.add(travelPlan);
-//        userInfo.setTblTravelPlansById(travelPlans);
         return userInfo;
     }
 
