@@ -14,6 +14,8 @@ import java.io.Serializable;
 @Entity
 @Table(name = "tbl_user_ext", schema = "", catalog = "tcs")
 @JsonSerialize(include = JsonSerialize.Inclusion.NON_EMPTY)
+
+//
 public class UserExt {
 
     private int id;
