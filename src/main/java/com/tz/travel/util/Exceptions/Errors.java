@@ -7,21 +7,21 @@ import java.util.List;
  * Created by cheng on 2014/12/22.
  */
 public class Errors {
-    private List<CustomError> errors;
+    private List<ServiceError> errors;
 
     public Errors(){
-        errors = new ArrayList<CustomError>();
+        errors = new ArrayList<ServiceError>();
     }
 
-    public Errors(List<CustomError> errors2){
+    public Errors(List<ServiceError> errors2){
         this.errors = errors2;
     }
 
-    public List<CustomError> getErrors(){
+    public List<ServiceError> getErrors(){
         return errors;
     }
 
-    public void setErrors(List<CustomError> errors){
+    public void setErrors(List<ServiceError> errors){
         this.errors = errors;
     }
 }
