@@ -12,20 +12,20 @@ import java.util.List;
 /**
  * Created by cheng on 2014/12/22.
  */
-public class CustomErrorException extends WebApplicationException{
+public class ServiceErrorException extends WebApplicationException{
     private static final long serialVersionUID = 1L;
     private Logger LOGGER = LoggerFactory.getLogger(getClass());
-    private List<CustomError> errors = new ArrayList<CustomError>();
+    private List<ServiceError> errors = new ArrayList<ServiceError>();
     private boolean errorLogged = false;
 
-    public CustomErrorException(){
+    public ServiceErrorException(){
     }
 
-    public List<CustomError> getErrors(){
+    public List<ServiceError> getErrors(){
         return errors;
     }
 
-    public void setErrors(List<CustomError> errors){
+    public void setErrors(List<ServiceError> errors){
         this.errors = errors;
     }
 
@@ -46,7 +46,7 @@ public class CustomErrorException extends WebApplicationException{
     }
 
     private void logError(){
-        for(CustomError e : this.errors){
+        for(ServiceError e : this.errors){
             LOGGER.error(" -> HTTP Status Code: {} - Body: {}", e.getCode(), e.getMessage());
         }
     }

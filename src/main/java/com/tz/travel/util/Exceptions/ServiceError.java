@@ -3,20 +3,20 @@ package com.tz.travel.util.Exceptions;
 /**
  * Created by cheng on 2014/12/22.
  */
-public class CustomError {
+public class ServiceError {
     private int code;
     private String message;
     private String cause;
 
-    public CustomError(){
+    public ServiceError(){
     }
 
-    public CustomError(int code, String message){
+    public ServiceError(int code, String message){
         this.code = code;
         this.message = message;
     }
 
-    public CustomError(int code, String message, String cause){
+    public ServiceError(int code, String message, String cause){
         this(code, message);
         this.cause = cause;
     }
